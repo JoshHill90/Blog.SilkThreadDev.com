@@ -2,32 +2,30 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from decouple import config
-import logging
 from .env.injector import SETTINGS_KEYS
 
-# Set the logging configuration
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
-# Create a logger
-logger = logging.getLogger(__name__)
-
-# Log messages
-logger.debug('Debug message')
-logger.info('Info message')
-logger.warning('Warning message')
-logger.error('Error message')
-logger.critical('Critical message')
-
-get_key = SETTINGS_KEYS
-
-django_key = get_key.djky
-user_name = get_key.urne
-password = get_key.pawd
-database_state = get_key.dbstt
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#-------------------------------------------------------------------------------------------------------#
+# Secret Values
+#-------------------------------------------------------------------------------------------------------#
+
+get_value = SETTINGS_KEYS
+
+django_key = get_value.djky
+sql_user_name = get_value.urne
+sql_password = get_value.pawd
+database_state = get_value.dbstt
+email_host = get_value.emht
+email_user = get_value.emun
+email_password = get_value.empw
+email_port = get_value.empt
+email_backend = get_value.embe
+
+
+#-------------------------------------------------------------------------------------------------------#
+# Project settings
+#-------------------------------------------------------------------------------------------------------#
 
 SECRET_KEY = django_key
 
@@ -35,6 +33,20 @@ DEBUG = database_state
 
 ALLOWED_HOSTS = []
 
+#-------------------------------------------------------------------------------------------------------#
+# SMTP email setup
+#-------------------------------------------------------------------------------------------------------#
+
+EMAIL_HOST = email_host
+EMAIL_HOST_USER = email_user
+EMAIL_HOST_PASSWORD = email_password
+EMAIL_PORT = email_port
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = email_backend
+
+#-------------------------------------------------------------------------------------------------------#
+# Base Directory setup
+#-------------------------------------------------------------------------------------------------------#
 
 # Application definition
 
@@ -85,12 +97,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SILK_THREAD_DEV_BLOG_DB',
-        'USER': user_name,
-        'PASSWORD': password,
+        'USER': sql_user_name,
+        'PASSWORD': sql_password,
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -106,7 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+#-------------------------------------------------------------------------------------------------------#
+# Time-zone/Language  
+#-------------------------------------------------------------------------------------------------------#
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -114,7 +129,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+#-------------------------------------------------------------------------------------------------------#
+# Directory and URLS 
+#-------------------------------------------------------------------------------------------------------#
 STATIC_URL = 'static/'
-
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
