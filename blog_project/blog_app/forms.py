@@ -4,13 +4,14 @@ from .models import Blog, Category, Contact
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ('title', 'author', 'artical', 'preview', 'category')
+        fields = ('title', 'author', 'artical', 'preview', 'category', 'image_url')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title for the post'}),
             'author': forms.Select(attrs={'class': 'form-control'}),
             'artical': forms.Textarea(attrs={'class': 'form-control'}),
             'preview' : forms.Textarea(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
+            'image_url': forms.URLInput(attrs={'class': 'form-control'})
         }
 
 
