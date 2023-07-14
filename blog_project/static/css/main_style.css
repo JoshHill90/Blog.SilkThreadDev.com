@@ -294,7 +294,22 @@ Card details
 .btn-cust-color {
   background-image: linear-gradient(to right, #03EBED 0%, #1A011E 51%, var(--comp-color) 100%);
 }
+
 .btn-cust-color:hover,
 .btn-cust-color:after {
   background-position: right center;
 }
+
+/*-------------------------------/
+
+blog details 
+
+/-------------------------------*/
+
+
+.blog-header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30vh;
+}
+
