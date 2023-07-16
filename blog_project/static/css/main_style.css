@@ -295,7 +295,6 @@ Card details
   background-image: linear-gradient(to right, #03EBED 0%, var(--comp-color)45%,  #1A011E 110%);
   border: 1px #03EBED;
 }
-
 .btn-cust-color:hover,
 .btn-cust-color:after {
   background-position: right center;
@@ -307,36 +306,10 @@ blog details
 
 /-------------------------------*/
 
-.blog-title-text{
-  font-size: 45px;
-  font-weight: var(--font-weights-semi);
-  letter-spacing: -2px;
-  color: var(--text-color)!important;
-}
 
-.blog-meta-text{
-  font-size: 15px;
-  font-weight: var(--font-weights-norm);
-  color: var(--text-color-secondary)!important;
-}
-
-.blog-details-text{
-  font-size: 15px;
-  font-weight: var(--font-weights-light);
-  color: var(--text-color-secondary)!important;
-}
-
-.blog-image {
-  height: 400px;
-  width: 100%;
-  background-size: 80%;
-  background-position: center;
+.blog-header {
   background-repeat: no-repeat;
-  position: relative;
-}
-
-.blog-box {
-  background-color: var(--bg-color-secondary);
-  padding: 25px 20px;
+  background-size: cover;
+  height: 30vh;
 }
 

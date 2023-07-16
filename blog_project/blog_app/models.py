@@ -58,7 +58,9 @@ class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.TextField(max_length=500)
     time_stamp = models.DateField(auto_now=True)
-    blog_numer = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    active = models.BooleanField(default=False)
+
     
     
     class Meta:
