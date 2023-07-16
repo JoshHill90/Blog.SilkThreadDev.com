@@ -1,0 +1,25 @@
+
+{% extends 'scheme.html' %}
+{% block title %}Edit Blog {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class='container blog-box'>
+    <div class="text-center">
+        <h1 class="h1-1">Edit Blog {{ blog.title }}</h1>
+    </div>
+    <br/>
+        <div class="form-group">
+            <form method=POST>
+                {% csrf_token %}
+                {{form.media}}
+                {{form.as_p}}
+                <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-details' blog.id %}'">Update</button>
+            </form>
+        </div>
+    {% else %}
+        <h1>Please sign in to access this page</h1>
+        <img src ='#'>
+    {% endif %}
+</div>
+
+{% endblock %}

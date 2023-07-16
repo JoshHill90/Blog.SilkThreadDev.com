@@ -3,38 +3,38 @@
 {% block title %}{{blog.title }} {% endblock %}
 {% block content %}
 
-<div class="container-fluid">
-    <div class="col-12">
-        <div class="blog-header text-center" style="background-image:url({{ blog.image_url }})">
-            <div class="post-box">
-                <h1 class="h1-1">{{blog.title }}</h1>
-            <small>
-                By: {{blog.author.first_name}} {{blog.author.last_name}}
-                <br/>
-                {{ blog.time_stamp }}
-            </small>
+    <div class='container'>
+        <div class='mt-4 mb-4'></div>
+        <div class='row'>
+            <div class='col-12'>
+                <p class='blog-details-text'>
+                    Writen by: {{ blog.author }} | Posted: {{ blog.time_stamp }}
+                </p>
+            </div>
+            <div class='col-12 text-center mt-2 mb-4'>
+                <h2 class='blog-title-text'>{{ blog.title }}
+            </div>
+            <div class='col-12 text-center'>
+                <div class='blog-image img-fluid' style="background-image: linear-gradient(to top, #d0cfd010 30%, #2a2a2a78 100%), url({{ blog.image_url }})" ></div>
+            </div>
+            <div class='col-12 mt-2 mb-4'>
+                <p class='blog-meta-text'>Category: {{blog.category}}</p>
             </div>
         </div>
     </div>
-</div>
-
-<div class="container">
-    <div class="post-body col mt-4 mb-4">
-        <p class="h3-3">{{blog.artical | safe}}</p>
-    </div>
-</div>
-<br/>
-<div class="container">
-    <div class=" row row-col-3 index-box w-100  mt-4 mb-4">
-    {% if user.is_authenticated %}
-        <button class="btn-cust-4" onclick="window.location.href='{% url 'blog-edit' blog.pk %}'">Edit</button>
-        <button class="btn-cust-4" onclick="window.location.href='{% url 'blog-delete' blog.pk %}'">Delete</button>
+    <div class='container'>
+        <div class='row'>
+            <div class='blog-box'>
+                <div class='col-12'>
+                    {{ blog.artical| safe }}
+                </div>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-edit' blog.pk %}'">Edit</button>
+        <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-delete' blog.pk %}'">Delete</button>
     {% endif %}
     </div>
-</div>
-
-
-
 
 
 {% endblock %}

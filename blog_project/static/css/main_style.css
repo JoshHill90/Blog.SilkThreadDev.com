@@ -278,21 +278,22 @@ Card details
 
 .btn-cust {
   flex: 1 1 auto;
-  margin: 10px;
-  padding: .5rem 1rem;
+  margin: 5px;
+  padding: 5px 10px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 17px;
   transition: 0.85s;
-  background-size: 200% auto;
+  background-size: 250% auto;
   color: white;
   font-weight: var(--font-weights-semi);
   text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
-  border-radius: 6px;
+  border-radius: 12px;
  }
 
 .btn-cust-color {
-  background-image: linear-gradient(to right, #03EBED 0%, #1A011E 51%, var(--comp-color) 100%);
+  background-image: linear-gradient(to right, #03EBED 0%, var(--comp-color)45%,  #1A011E 110%);
+  border: 1px #03EBED;
 }
 
 .btn-cust-color:hover,
@@ -306,10 +307,36 @@ blog details
 
 /-------------------------------*/
 
+.blog-title-text{
+  font-size: 45px;
+  font-weight: var(--font-weights-semi);
+  letter-spacing: -2px;
+  color: var(--text-color)!important;
+}
 
-.blog-header {
+.blog-meta-text{
+  font-size: 15px;
+  font-weight: var(--font-weights-norm);
+  color: var(--text-color-secondary)!important;
+}
+
+.blog-details-text{
+  font-size: 15px;
+  font-weight: var(--font-weights-light);
+  color: var(--text-color-secondary)!important;
+}
+
+.blog-image {
+  height: 400px;
+  width: 100%;
+  background-size: 80%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 30vh;
+  position: relative;
+}
+
+.blog-box {
+  background-color: var(--bg-color-secondary);
+  padding: 25px 20px;
 }
 

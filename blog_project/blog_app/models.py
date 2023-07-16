@@ -54,3 +54,18 @@ class Contact(models.Model):
     def get_absolute_url(self):
         return reverse("index")
     
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.TextField(max_length=500)
+    time_stamp = models.DateField(auto_now=True)
+    blog_numer = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    
+    
+    class Meta:
+        ordering = ['time_stamp']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.post, self.user)
+    
+
+    

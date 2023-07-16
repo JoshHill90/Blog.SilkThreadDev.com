@@ -1,21 +1,41 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormView
-from .models import Blog, Category, MetaTags, Contact
-from .forms import BlogForm, CategoryForm, ContactForm
+from .models import Blog, Category, MetaTags, Contact, Comments
+from .forms import BlogForm, CategoryForm, ContactForm, CommentForm
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse_lazy
 from blog_project.env.injector import SETTINGS_KEYS as sk
 
+
+
 #-------------------------------------------------------------------------------------------------------#
 # blog views
 #-------------------------------------------------------------------------------------------------------#
 
-class BlogDetailView(DetailView):
-    model = Blog
+def blog_details(request, id):
     template_name = 'blog/blog-details.html'
+    blog = get_object_or_404(Blog, pk=id)
+    comments = blog.comments.filter(active=True)
+    new_comments = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(request, template_name, {
+            'blog': blog,
+            'comments': comments,
+            'new_comments': new_comments,
+            'comment_form': comment_form
+        })
+
 
 class BlogCreateView(CreateView):
     model = Blog
@@ -24,12 +44,13 @@ class BlogCreateView(CreateView):
 
 class BlogEditView(UpdateView):
     model = Blog
+    form_class = BlogForm
     template_name = 'blog/blog-edit.html'
 
 class BlogDeleteView(DeleteView):
     model = Blog
     template_name = 'blog/blog-delete.html'
-    success_url = reverse_lazy('success-delete')
+    success_url = reverse_lazy('success')
 
 def all_blogs(request):
     all_category = Blog.objects.all()

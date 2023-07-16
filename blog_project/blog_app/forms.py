@@ -1,5 +1,5 @@
 from django import forms
-from .models import Blog, Category, Contact
+from .models import Blog, Category, Contact, Comments
 
 class BlogForm(forms.ModelForm):
     class Meta:
@@ -36,3 +36,8 @@ class ContactForm(forms.ModelForm):
             'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Subject'}),
             'body' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message Body'}),
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ('user', 'post')
