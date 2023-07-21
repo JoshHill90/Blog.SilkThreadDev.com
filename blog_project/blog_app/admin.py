@@ -8,7 +8,7 @@ admin.site.register(MetaTags)
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'post', 'blog', 'time_stamp', 'active')
+    list_display = ('email', 'comment', 'blog', 'time_stamp', 'active')
     list_filter = ('active', 'time_stamp')
     search_fields = ('user', 'post')
     actions = ['approve_comments']

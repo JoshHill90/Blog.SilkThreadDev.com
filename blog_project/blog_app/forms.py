@@ -40,4 +40,5 @@ class ContactForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        fields = ('user', 'post')
+        fields = ('name', 'email', 'comment')
+

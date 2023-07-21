@@ -36,13 +36,13 @@
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Post</a>
+            <a class="nav-link" href="{% url 'blogs' %}">Post</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Projects</a>
@@ -53,7 +53,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'blog-create' %}">Create a Post</a></li>
               <li><a class="dropdown-item" href="{% url 'category' %}">Add Category</a></li>
-              <li><a class="dropdown-item" href="{% url 'meta-tags' %}">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="#">Edit Profile</a></li>
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>

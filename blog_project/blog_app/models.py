@@ -55,9 +55,10 @@ class Contact(models.Model):
         return reverse("index")
     
 class Comments(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.TextField(max_length=500)
-    time_stamp = models.DateField(auto_now=True)
+    email = models.EmailField(max_length=255, default='none@none.com')
+    name = models.CharField(max_length=50, default='none')
+    comment = models.TextField(max_length=500)
+    time_stamp = models.DateField(auto_now_add=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     active = models.BooleanField(default=False)
 
@@ -67,7 +68,7 @@ class Comments(models.Model):
         ordering = ['time_stamp']
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.post, self.user)
+        return 'Comment {} by {}'.format(self.comment, self.email)
     
 
     

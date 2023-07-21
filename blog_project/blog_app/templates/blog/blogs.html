@@ -1,0 +1,80 @@
+{% extends 'scheme.html' %}
+{% block title %} Blogs {% endblock %}
+{% block content %}
+  
+  <div class='container header-box mb-4'>
+    <div class='text-center mb-4'>
+      <h2 class='h2-2'>Recent Post</h2>
+    </div>
+    <hr>
+    <h3 class='h3-3 mb-2'>Search and Filter</h3>
+    <form method="GET" action="." class='form-group'>
+      <div class='row'>
+        <div class='col-8 mb-2'>
+          <input class="form-control" type="search" name="keyword" placeholder="Keyword">
+        </div>
+        <div class='col-4 mb-2'>
+          <select class="form-select" type="select" name="category" placeholder="Category">
+            <option value="Category">Category</option>
+            {% for category in category_list %}
+              <option value="{{ category.id }}">{{ category }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-8'>
+          <input class="form-control" list="title-list" type="search" name="title" placeholder="Title">
+          <datalist id="title-list">
+            {% for blog in blog_list.all %}
+            <option value="{{ blog.title }}">
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class='col-4'>
+          <select class="form-select" type="select" name="tag">
+            <option value="Tags">Tags</option>
+            {% for tag in tags_list %}
+              <option value="{{ tag }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn-cust btn-cust-color mt-4">Search</button>
+    </form>
+  </div>
+
+  <div class='container'>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for blog in blog_list.all  %}
+        <div class="col card-atts">
+          <div class="card card-color mb-3">
+            {% if blog.image_url %}
+              <div style="background-image: linear-gradient(to right top, rgba(100, 200, 100, 0.2), rgba(0, 0, 0, .7)), url('{{ blog.image_url }}')" class="card-img-top card-shot" alt="...">
+                <h5 class=" h2-2 card-shot-text card-title">{{blog.title}}</h5>
+              </div>
+            {% else %}
+            {% endif %}
+            <div class="card-body">
+              
+              <p class="card-text p-p">{{ blog.preview }}</p>
+              <div class='row'>
+                <div class='col-6'>
+                  <p class="card-text p-p">
+                    By {{ blog.author }}
+                    <br>{{ blog.time_stamp }}
+                  </p>
+                </div>
+                <div class="col-6">
+                  <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-details' blog.pk %}'">READ ME</button>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+{% endblock %}

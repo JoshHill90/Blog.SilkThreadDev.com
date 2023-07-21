@@ -4,10 +4,9 @@
 /*variable*/
 :root{
   --text-color:rgb(255, 255, 255);
-  --text-color-secondary:rgb(65, 65, 65);
+  --text-color-secondary:rgb(156, 255, 253);
   --bg-color:rgb(43, 43, 43); 
-  --bg-shadow:rgba(125, 127, 126);
-  --bg-color-secondary:rgb(110, 110, 110);
+  --bg-color-secondary:#708D8D;
   --prime-color:#03EBED;
   --comp-color:#340E1D;
   --comp-color-light:rgba(56, 40, 79, .95);
@@ -50,6 +49,15 @@ html {
   padding: 30px 0 30px;
   height: 100vh;
 }
+
+.header-box {
+  background-color:#027576;
+  position: relative;
+  padding: 15px 20px;
+  margin-top: 30px ;
+  border-radius: 4px;
+}
+
 
 .h1-1 {
   font-size: var(--h1);
@@ -115,6 +123,13 @@ Hero Section
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.hero-stars {
+  background-image: url('https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/d4543378-554f-4d13-61e8-c3d62a029400/public');
+  background-repeat: repeat;
+  background-size: 100%;
+  height: 100vh;
 }
 
 .hero-box img{
@@ -292,12 +307,13 @@ Card details
  }
 
 .btn-cust-color {
-  background-image: linear-gradient(to right, #03EBED 0%, var(--comp-color)45%,  #1A011E 110%);
+  background-image: linear-gradient(to right, #03EBED 2%, var(--comp-color)45%,  #1A011E 100%);
   border: 1px #03EBED;
 }
 .btn-cust-color:hover,
 .btn-cust-color:after {
-  background-position: right center;
+  background-position: right 25% center;
+  border: 1px #03EBED;
 }
 
 /*-------------------------------/
@@ -307,9 +323,52 @@ blog details
 /-------------------------------*/
 
 
-.blog-header {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 30vh;
+ 
+.blog-title-text{
+  font-size: 45px;
+  font-weight: var(--font-weights-semi);
+  letter-spacing: -2px;
+  color: var(--text-color)!important;
 }
+
+.blog-meta-text{
+  font-size: 15px;
+  font-weight: var(--font-weights-norm);
+  color: var(--text-color-secondary)!important;
+}
+
+.blog-details-text{
+  font-size: 15px;
+  font-weight: var(--font-weights-light);
+  color: var(--text-color-secondary)!important;
+}
+
+.blog-image {
+  height: 400px;
+  width: 100%;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.blog-box {
+  background-color: var(--bg-color-secondary);
+  padding: 25px 20px;
+  color: var(--text-color)!important;
+}
+
+.small-box {
+  background-color: #027576;
+  padding: 25px 20px;
+  color: var(--text-color)!important;
+  border-radius: 12px;
+}
+
+/*-------------------------------/
+
+
+
+/-------------------------------*/
+
 

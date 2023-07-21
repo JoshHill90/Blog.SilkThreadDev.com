@@ -3,26 +3,27 @@
 {% block content %}
 <div class='container-fluid'>
   <div class="hero-img">
-    <div class='hero-box row'>
-      <div class="hero-text col-md-6 col-12  slide-left" data-value='-4' id="slide-in">
-        <h1 class="object hero-h1"> 
-          Silk Thread Blog
-        </h1>
-        <h2 class='hero-h2' style='max-width:400px'>  
-          <br/>
-            Adventures of a Web Developer: Insights from Silk Thread Blog
-        </h2> 
-        <div class="mt-3 mb-3">
-          <label for="subscribList" class="form-label p-p">Enter your email address and subscrib to my news letter.</label>
-          <input type="email" style="width:300px" class="form-control" id="subscribList" placeholder="john@mail.com">
-          <button type="button" class="btn-cust btn-cust-color" style="width:250px">Subscribe</button>
+    <div style='width:'class="object hero-stars float-in" data-value='3'>
+      <div class='hero-box row'>
+        <div class="hero-text col-md-6 col-12  slide-left" data-value='-4' id="slide-in">
+          <h1 class="object hero-h1"> 
+            Silk Thread Blog
+          </h1>
+          <h2 class='hero-h2' style='max-width:400px'>  
+            <br/>
+              Adventures of a Web Developer: Insights from Silk Thread Blog
+          </h2> 
+          <div class="mt-3 mb-3">
+            <label for="subscribList" class="form-label p-p">Enter your email address and subscrib to my news letter.</label>
+            <input type="email" style="width:300px" class="form-control" id="subscribList" placeholder="john@mail.com">
+            <button type="button" class="btn-cust btn-cust-color" style="width:250px">Subscribe</button>
+          </div>
         </div>
-      </div>
-      <div class='col-md-6 col-12 '>
-        <img class="img-fluid object float-in" data-value='-9' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/d4543378-554f-4d13-61e8-c3d62a029400/public">
-        <img class="img-fluid object fade-in" data-value='-3' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/9dc403f6-4ffc-441a-1474-3433065cde00/public">
-        <img class="img-fluid object float-in" data-value='3' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/7f7e3a25-4bc0-47d8-e985-e185de0f2600/public">
-        <img class="img-fluid object slide-right" id='slide-in' data-value='-1' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/f9e5bb8d-7a94-4a0d-ed49-62a01702a900/public">
+        <div class='col-md-6 col-12 '>
+          <img class="img-fluid object fade-in" data-value='-3' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/9dc403f6-4ffc-441a-1474-3433065cde00/public">
+          <img class="img-fluid object float-in" data-value='3' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/7f7e3a25-4bc0-47d8-e985-e185de0f2600/public">
+          <img class="img-fluid object slide-right" id='slide-in' data-value='-1' src="https://imagedelivery.net/4_y5kVkw2ENjgzV454LjcQ/f9e5bb8d-7a94-4a0d-ed49-62a01702a900/public">
+        </div>
       </div>
     </div>
   </div>
@@ -60,7 +61,7 @@
                 </p>
               </div>
               <div class="col-6">
-                <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-details' blog.id %}'">READ ME</button>
+                <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-details' blog.pk %}'">READ ME</button>
               </div>
             </div>
           </div> 

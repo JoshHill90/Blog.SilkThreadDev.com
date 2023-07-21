@@ -1,0 +1,24 @@
+
+{% extends 'scheme.html' %}
+{% block title %}Success{% endblock %}
+{% block content %}
+<br/>
+<div class='blog-box'> 
+    <div class='row'>
+        <div class='col-12'>
+            <h1 class='h1-1'>Thanks {{ name }} for shearing your thoughts</h1>
+            <h3 class='h3-3'> 
+                Your comment is awaiting approval from he site admin, an email will be sent to {{  email }} 
+                once the comment has been approved or denied 
+            </h3>
+            <p class='p-p'> Your comment: <br> {{ comment }} </p>
+            <br/>
+            <p class='p-p'>Click the back button to go back to the blog post</p>
+
+            <button class='btn-cust btn-cust-color' onclick="window.location.href='{% url 'index' %}'"> Back </button>
+        </div>
+    </div>
+</div>
+<br/>
+
+{% endblock %}
