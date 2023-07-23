@@ -1,0 +1,28 @@
+
+{% extends 'scheme.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<div class='container'>
+    <div class='header-box mt-4 mb-4'>
+        <h1 class='h1-1 text-center'>Edit Profile</h1>
+        <p class='p-p text-center'> {{ user.username }} </p>
+        <img class='icon-image rounded-circle' src='{{ user.profile.icon.icon }}'>
+    </div>
+    <div class='blog-box'>
+        <div class="form-group">
+            <form method=POST>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn-cust btn-cust-color">Update</button>
+        </div>
+        <div class='header-box mt-4 mb-4'>
+            <h3 class='h3-3'>Change password</h3>
+            <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'change-password' user_id=user.id %}'">Change password</button>
+        </div>
+    </div>
+</div>
+<script> 
+    var name = '{{ user.id }}';
+    document.getElementById('userName').value = name;
+</script>
+{% endblock %}

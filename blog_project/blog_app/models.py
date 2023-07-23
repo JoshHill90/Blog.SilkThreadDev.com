@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 
@@ -29,10 +29,11 @@ class Category(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    artical = RichTextField(blank=True, null=True)
+    article = RichTextField(blank=True, null=True)
     preview = models.CharField(max_length=255, blank=True)
     time_stamp = models.DateField(auto_now=True)
     image_url = models.URLField(blank=True)
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null='True')
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -44,7 +45,7 @@ class Blog(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=50)
-    email = models.URLField(max_length=255)
+    email = models.EmailField(max_length=255)
     subject = models.CharField(max_length=255)
     body = models.TextField(max_length=800)
 
@@ -52,7 +53,7 @@ class Contact(models.Model):
         return f'Name: {self.name} - Subject: {self.subject}'
     
     def get_absolute_url(self):
-        return reverse("index")
+        return reverse("contact-success")
     
 class Comments(models.Model):
     email = models.EmailField(max_length=255, default='none@none.com')
@@ -61,6 +62,7 @@ class Comments(models.Model):
     time_stamp = models.DateField(auto_now_add=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     active = models.BooleanField(default=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     
     
@@ -69,6 +71,8 @@ class Comments(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.comment, self.email)
+    
+
     
 
     

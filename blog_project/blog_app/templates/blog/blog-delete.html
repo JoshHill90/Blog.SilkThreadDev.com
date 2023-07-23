@@ -3,6 +3,7 @@
 {% block title %}Edit Blog {% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
+{% if user.id == blog.author.id %}
 <div class='container header-box mb-4'>
     <div class='text-center mb-4'>
       <h1 class='h1-1'>Delete Blog</h1>
@@ -19,6 +20,7 @@
                 <button class="btn-cust btn-cust-color" type='submit'>Delete</button>
             </form>
         </div>
+        {% endif %}
     {% else %}
         <h1>Please sign in to access this page</h1>
         <img src ='#'>

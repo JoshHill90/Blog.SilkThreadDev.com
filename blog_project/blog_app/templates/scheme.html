@@ -42,7 +42,7 @@
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blogs' %}">Post</a>
+            <a class="nav-link" href="{% url 'blogs' %}">Blogs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Projects</a>
@@ -51,20 +51,25 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Members Section</a>
             <ul class="dropdown-menu">
+            {% for group in user.groups.all %}
+                {% if group.name == 'authors' %}
               <li><a class="dropdown-item" href="{% url 'blog-create' %}">Create a Post</a></li>
-              <li><a class="dropdown-item" href="{% url 'category' %}">Add Category</a></li>
-              <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                {% else %}
+                {% endif %}
+                {% endfor %}
+              <li><a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Profile</a></li>
               <div class="dropdown-divider"></div>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
             </ul>
           </li>
           {% else %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Members Portal</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Register</a></li>
+              <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
               <div class="dropdown-divider"></div>
-              <li><a class="dropdown-item" href="#">Login</a></li>
+              <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
             </ul>
           </li>
       {% endif %}
@@ -81,50 +86,36 @@
 
     {% endblock %}
     </div>
-
+<br/>
     <!------------------------------------------------>
     <!-- dynamic content block -->
     <!------------------------------------------------>
-<div class="container">
+<div class="container-fluid bg-dark">
   <footer class="py-5">
     <div class="row">
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h3 class='h3-3'>Silk Thread Dev</h3>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Services</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Contact</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Portfolio</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">About</a></li>
         </ul>
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h3 class='h3-3'>Follow Me</h3>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Thread</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Github</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 p-p text-body-secondary">Linkedin</a></li>
         </ul>
       </div>
 
       <div class="col-md-5 offset-md-1 mb-3">
         <form>
-          <h5>Subscribe to our newsletter</h5>
-          <p>Monthly digest of what's new and exciting from us.</p>
+          <h3 class='h3-3'>Subscribe to our newsletter</h3>
+          <p class='p-p'>Monthly digest of what's new and exciting from us.</p>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
             <label for="newsletter1" class="visually-hidden">Email address</label>
             <input id="newsletter1" type="text" class="form-control" placeholder="Email address">

@@ -3,6 +3,7 @@
 {% block title %}Edit Blog {% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
+{% if user.id == blog.author.id %}
 <div class='container blog-box'>
     <div class="text-center">
         <h1 class="h1-1">Edit Blog {{ blog.title }}</h1>
@@ -16,6 +17,7 @@
                 <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-details' blog.id %}'">Update</button>
             </form>
         </div>
+    {% endif %}
     {% else %}
         <h1>Please sign in to access this page</h1>
         <img src ='#'>

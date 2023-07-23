@@ -2,19 +2,22 @@
 {% extends 'scheme.html' %}
 {% block title %}create a page {% endblock %}
 {% block content %}
-<div class='container header-box mb-4'>
-    <div class='text-center mb-4'>
+<div class='container mb-4'>
+    <div class='text-center header-box  mb-4'>
       <h2 class='h1-1'>Create a Blog</h2>
     </div>
-</div>
-<div class="form-group blog-box">
-    <form method=POST enctype="multipart/form-data">
+
+    <form method=POST class='form-group blog-box' enctype="multipart/form-data">
         {% csrf_token %}
         {{form.media}}
         {{form.as_p}}
         <button class="btn-cust btn-cust-color">Create</button>
     </form>
 </div>
-
+</div>
+<script> 
+    var name = '{{ user.id }}';
+    document.getElementById('userName').value = name;
+</script>
 
 {% endblock %}

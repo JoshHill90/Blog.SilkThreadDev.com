@@ -27,11 +27,13 @@
         <div class='row'>
             <div class='blog-box'>
                 <div class='col-12'>
-                    <p class='p-p'>{{ blog.artical| safe }}</p>
+                    <p class='p-p'>{{ blog.article| safe }}</p>
                 </div>
                 {% if user.is_authenticated %}
+                {% if user.id == blog.author.id %}
                 <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-edit' blog.pk %}'">Edit</button>
                 <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'blog-delete' blog.pk %}'">Delete</button>
+                {% endif %}
                 {% endif %}
             </div>
         </div>
@@ -47,6 +49,38 @@
             <h2 class='h2-2 text-center'>Comments</h2>
         </div>
         <div class='row blog-box'>
+            {% if user.is_authenticated %}
+            <div class='col-12'>
+                <h3>Leave a comment</h3>
+                <h2 class='h2-2' id='validated' style='display: none'>Message submited for review by admin.</h2>
+                <form method="post" class='small-box form-group' id='NewCommentForm'>
+                    {% csrf_token %}
+                    <div class='col-12'>
+                        <p>Member: {{ user.username}}</p>
+                        <p>Email: {{ user.email}}</p>
+                    </div>
+                    <div class='row'>
+                        <div class='col-12 col-md-2 g-2'>
+                            <img class='rounded-circle icon-image' src='{{ user.profile.icon.icon}}'>
+                            <input text='text' name="{{ comment_form.user_id.html_name }}" value={{user.id}} class="form-control" hidden>
+                            </br>
+                            <input type="text" name="{{ comment_form.name.html_name }}" value={{user.username}} class="form-control" hidden>
+                            
+                            <input type="email" name="{{ comment_form.email.html_name }}" value={{user.email}} class="form-control" hidden>
+                        </div>
+                        <div class='col-12 col-md-10'>
+                            <label for="{{ comment_form.comment.id_for_label }}">Comment:</label>
+                            <textarea class="form-control h-100" id="{{ comment_form.comment.id_for_label.id_for_label }}" name="{{comment_form.comment.html_name}}"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn-cust btn-cust-color" id='submitBtn'>
+                        Submit
+                    </button>
+                </form>
+                </br>
+            </div>
+
+            {% else %}
             <div class='col-12'>
                 <h3>Leave a comment</h3>
                 <h2 class='h2-2' id='validated' style='display: none'>Message submited for review by admin.</h2>
@@ -56,7 +90,7 @@
                         <input type="text" id="{{ comment_form.name.id_for_label }}" name="{{ comment_form.name.html_name }}" class="form-control">
                         <label for="{{ comment_form.email.id_for_label }}">Your Email:</label>
                         <input type="email" id="{{ comment_form.email.id_for_label }}" name="{{ comment_form.email.html_name }}" class="form-control">
-
+                        <input text='text' name="{{ comment_form.user_id.html_name }}" value='2' class="form-control" hidden>
                         <label for="{{ comment_form.comment.id_for_label }}">Comment:</label>
                         <textarea class="form-control" id="{{ comment_form.comment.id_for_label.id_for_label }}" name="{{comment_form.comment.html_name}}"></textarea>
 
@@ -66,6 +100,7 @@
                 </form>
                 </br>
             </div>
+            {% endif %}
             
             {% if not blog.comments.all %}
             <div class='col-12'>
@@ -75,13 +110,24 @@
             <div class='col-12'>
                 {% for comment in comments %}
                     <div class='small-box'>
-                        <p class='p-p'>Commented by: {{ comment.name }}
-                        <br/>
-                            Date posted: {{ comment.time_stamp }}
-                        <br/>
-                        Comment:
-                        </p>
-                        <p class='p-p'>{{ comment.comment }}</p>
+                        <div class='row'>
+                            <div class='col-12'>
+                                <p class='p-p'>Commented by: {{ comment.name }}
+                                <br/>
+                                    Date posted: {{ comment.time_stamp }}
+                                <br/>
+                                Comment:
+                                </p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-md-2'>
+                                <img class='rounded-circle icon-image' src='{{ comment.user_id.profile.icon.icon }}'>
+                            </div>
+                            <div class='col-12 col-md-9'>
+                                <p class='p-p'>{{ comment.comment }}</p>
+                            </div>
+                        </div>
                     </div>
                 <br/>
                 {% endfor %}

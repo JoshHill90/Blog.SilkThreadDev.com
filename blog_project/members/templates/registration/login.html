@@ -1,0 +1,25 @@
+
+{% extends 'scheme.html' %}
+{% block title %}login{% endblock %}
+{% block content %}
+<div class='container'>
+    <div class='header-box mt-4 mb-4'>
+        <h1 class='h1-1 text-center'>Login</h1>
+    </div>
+    <div class='blog-box'>
+        <div class="form-group">
+            <form method=POST>
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn-cust btn-cust-color">Login</button>
+        </div>
+        <div class='header-box mt-4 mb-4'>
+            <h3 class='h3-3 text-center'>Not yet a member</h3>
+            <button class="btn-cust btn-cust-color" onclick="window.location.href='{% url 'register' %}'">Register</button>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
