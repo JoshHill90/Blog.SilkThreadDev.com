@@ -1,0 +1,5 @@
+Django==4.2.3
+django_ckeditor==6.6.1
+env==0.1.0
+python-decouple==3.8
+python-dotenv==1.0.0

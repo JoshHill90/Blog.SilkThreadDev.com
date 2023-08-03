@@ -115,7 +115,7 @@ class AutoReply:
 
 
 #### Test
-"""test_send = os.getenv("TEST_SEND")
+test_send = os.getenv("TEST_SEND")
 
 subject_test = "TEST"
 
@@ -125,5 +125,5 @@ SMTP = AutoReply()
 
 SMTP.contact_request(test_send, 'john')
 print('smtp request')
-SMTP.contact_alart(test_send, 'john', subject_test, body_test)"""
+SMTP.contact_alart(test_send, 'john', subject_test, body_test)
 
