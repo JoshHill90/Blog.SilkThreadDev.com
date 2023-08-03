@@ -31,7 +31,7 @@ SECRET_KEY = django_key
 
 DEBUG = database_state
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['test.silkthreaddev.com', 'www.test.silkthreaddev.com']
 
 #-------------------------------------------------------------------------------------------------------#
 # SMTP email setup

@@ -5,10 +5,10 @@ from django import forms
 from .models import UserIcon
 
 group_list = []
-query_group_list = Group.objects.all().values_list('name', 'name')
+#query_group_list = Group.objects.all().values_list('name', 'name')
 
-for group in query_group_list:
-    group_list.append(group)
+##for group in query_group_list:
+    #group_list.append(group)
 
 class RegForm(UserCreationForm):
     email = forms.EmailField()
