@@ -31,7 +31,7 @@ SECRET_KEY = django_key
 
 DEBUG = database_state
 
-ALLOWED_HOSTS = ['test.silkthreaddev.com', 'www.test.silkthreaddev.com']
+ALLOWED_HOSTS = ['blog.silkthreaddev.com', 'www.blog.silkthreaddev.com']
 
 #-------------------------------------------------------------------------------------------------------#
 # SMTP email setup
@@ -136,4 +136,4 @@ STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

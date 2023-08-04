@@ -1,4 +1,4 @@
-from decouple import config
+"""from decouple import config
 
 import MySQLdb
 
@@ -27,4 +27,4 @@ try:
 except MySQLdb.Error as e:
     print("Connection failed.")
 
-    
+    """
